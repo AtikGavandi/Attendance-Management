@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL;
+using DAL.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +12,19 @@ namespace AttendanceManagement.Controllers
     {
         public ActionResult Index()
         {
+            List<Student> Students = new List<Student>();
+            try
+            {
+                using (var unitOfWork = new UnitOfWork(new DBEntities()))
+                {
+                    Students = unitOfWork.Students.GetTop2Student(1).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+
             return View();
         }
 
