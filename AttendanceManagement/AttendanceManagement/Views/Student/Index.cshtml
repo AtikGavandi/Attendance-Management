@@ -1,0 +1,65 @@
+﻿@using DAL;
+
+
+@{
+    ViewBag.Title = "Index";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Students</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a href="/Home/Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Student</li>
+    </ol>
+    <div class="card mb-4">
+        <div class="card-body">
+            Contians List of All Students
+        </div>
+    </div>
+    <div class="card mb-4">
+        <div class="card-header">
+            <i class="fas fa-table mr-1"></i>
+            Students
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll Number</th>
+                            <th>Birth Date</th>
+                            <th>Address</th>
+                            <th>Current Year</th>
+                            <th>Created By</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Name</th>
+                            <th>Roll Number</th>
+                            <th>Birth Date</th>
+                            <th>Address</th>
+                            <th>Current Year</th>
+                            <th>Created By</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        @foreach (var student in ViewBag.Students)
+                        {
+                            <tr>
+                                <td>@student.Name</td>
+                                <td>@student.RollNumber</td>
+                                <td>@student.BirthDate</td>
+                                <td>@student.Address</td>
+                                <td>@student.CurrentYear</td>
+                                <td>@student.CreatedBy</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
